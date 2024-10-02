@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    environment:
+      POSTGRES_USER: johndoe
+      POSTGRES_PASSWORD: randompassword
+      POSTGRES_DB: mydb
+    ports:
+      - "5000:5000"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
