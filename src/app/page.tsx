@@ -1,9 +1,8 @@
-import DropDownAction from "@/components/DropDownAction";
-
+import CatCard from "@/components/CatCard";
 export default function Home() {
 	return (
 		<div>
-			<DropDownAction />
+			<CatCard />
 		</div>
 	);
 }
