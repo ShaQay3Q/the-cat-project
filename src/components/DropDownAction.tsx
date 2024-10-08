@@ -26,7 +26,7 @@ export default function DropdownAction() {
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className='w-56'>
-				<DropdownMenuLabel>Select Category</DropdownMenuLabel>
+				<DropdownMenuLabel>Choose an Action:</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuRadioGroup
 					value={category}
