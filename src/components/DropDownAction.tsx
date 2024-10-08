@@ -14,7 +14,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function DropdownMenuRadioGroupDemo() {
+export default function DropdownAction() {
 	const [category, setCategory] = React.useState("food");
 
 	return (
