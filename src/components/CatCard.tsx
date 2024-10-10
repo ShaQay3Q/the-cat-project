@@ -12,13 +12,13 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import DropdownAction from "./DropDownAction";
-import { compareDateTimes, getCurrentDateTime } from "@/utils/utilDateTime";
-import { fetchExternalImage } from "next/dist/server/image-optimizer";
+// import { compareDateTimes, getCurrentDateTime } from "@/utils/utilDateTime";
+// import { fetchExternalImage } from "next/dist/server/image-optimizer";
 
 export default function CatCard() {
 	const [catName] = useState("Vita");
 	const [lastFed, setLastFed] = useState<DateTime | null>(null); // State for last fed time
-	const [timeSinceLastFed, setTimeSinceLastFed] = useState<string>("");
+	// const [timeSinceLastFed, setTimeSinceLastFed] = useState<string>("");
 	const date = "2024-10-09T14:30:00Z"; // Hardcoded DateTime string // TODO get it from db
 	// const now = DateTime.now().toISO(); // Get the NOW DateTime and store it as string
 
@@ -29,10 +29,9 @@ export default function CatCard() {
 		const fetchLastTime = () => {
 			const lasFeedingDateTime = DateTime.fromISO(date); // Convert an ISO string back to a DateTime object
 			setLastFed(lasFeedingDateTime); // Set the lastFed state
-
+			const start = DateTime.fromISO(date);
 			const now = DateTime.now(); // Get the NOW DateTime and store it as string
-			const diff =
-				now.diff(lasFeedingDateTime, "minutes").toObject().minutes || 0;
+			const diff = now.diff(start, "minutes");
 			console.log(`diff: ${diff}`);
 		};
 		fetchLastTime();
