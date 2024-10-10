@@ -12,30 +12,41 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import DropdownAction from "./DropDownAction";
+import { compareDateTimes, getCurrentDateTime } from "@/utils/utilDateTime";
+import { fetchExternalImage } from "next/dist/server/image-optimizer";
 
 export default function CatCard() {
 	const [catName] = useState("Vita");
 	const [lastFed, setLastFed] = useState<DateTime | null>(null); // State for last fed time
-	const data = "2024-10-09T14:30:00Z"; // Hardcoded DateTime string
+	const [timeSinceLastFed, setTimeSinceLastFed] = useState<string>("");
+	const date = "2024-10-09T14:30:00Z"; // Hardcoded DateTime string // TODO get it from db
 	// const now = DateTime.now().toISO(); // Get the NOW DateTime and store it as string
 
 	const alt = `${catName}'s image`;
+	// console.log(`logging dateTime: ${dateTime.toString()}`);
 
 	useEffect(() => {
-		const dateTime = DateTime.fromISO(data); // Convert an ISO string back to a DateTime object
-		console.log(`logging dateTime: ${dateTime}`);
+		const fetchLastTime = () => {
+			const lasFeedingDateTime = DateTime.fromISO(date); // Convert an ISO string back to a DateTime object
+			setLastFed(lasFeedingDateTime); // Set the lastFed state
 
-		setLastFed(dateTime); // Set the lastFed state
+			const now = DateTime.now(); // Get the NOW DateTime and store it as string
+			const diff =
+				now.diff(lasFeedingDateTime, "minutes").toObject().minutes || 0;
+			console.log(`diff: ${diff}`);
+		};
+		fetchLastTime();
+		// const dateTime = DateTime.fromISO(date); // Convert an ISO string back to a DateTime object
+	}, []);
+
+	useEffect(() => {
+		if (lastFed) {
+			console.log(`Updated lastFed state: ${lastFed}`);
+		}
 	}, []);
 
 	// useEffect(() => {
-	// 	if (lastFed) {
-	// 		console.log(`Updated lastFed state: ${lastFed.toString()}`);
-	// 	}
-	// }, [lastFed]);
-
-	// useEffect(() => {
-	//     // Function to fetch DateTime from the database
+	//     // Function to fetch DateTime from the datebase
 	//     const fetchLastFedTime = async () => {
 	//         try {
 	//             // Replace this with your API endpoint
@@ -43,10 +54,10 @@ export default function CatCard() {
 	//             if (!response.ok) {
 	//                 throw new Error('Network response was not ok');
 	//             }
-	//             const data = await response.json();
+	//             const date = await response.json();
 
 	//             // Assuming your API returns a DateTime string in ISO format
-	//             const fetchedDateTime = DateTime.fromISO(data.lastFed);
+	//             const fetchedDateTime = DateTime.fromISO(date.lastFed);
 	//             setLastFed(fetchedDateTime);
 	//         } catch (error) {
 	//             console.error('Error fetching last fed time:', error);
@@ -66,6 +77,8 @@ export default function CatCard() {
 						<br />
 						<span className='font-bold'>
 							{lastFed ? lastFed.toFormat(" cccc, HH:mm") : " Loading..."}
+							{/* {lastFed?.daysInYear} */}
+							{/* {lastFed?.} */}
 						</span>
 					</p>
 				</CardDescription>

@@ -34,7 +34,7 @@ model Cat {
 model Action {
   id            String    @id @default(uuid())
   actionType    String    // Can be 'food' or 'medicine'
-  time          DateTime  // Store the date and time of the action
+  dateTime      DateTime  // Store the date and time of the action
   catId         String    // Foreign key to reference the Cat
   cat           Cat       @relation(fields: [catId], references: [id])
 }
