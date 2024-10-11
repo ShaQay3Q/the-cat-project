@@ -31,18 +31,19 @@ export default function CatCard() {
 			setLastFed(lasFeedingDateTime); // Set the lastFed state
 			const start = DateTime.fromISO(date);
 			const now = DateTime.now(); // Get the NOW DateTime and store it as string
-			const diff = now.diff(start, "minutes");
+			const diff = Math.floor(now.diff(start, "minutes").minutes);
 			console.log(`diff: ${diff}`);
 		};
 		fetchLastTime();
 		// const dateTime = DateTime.fromISO(date); // Convert an ISO string back to a DateTime object
 	}, []);
 
-	useEffect(() => {
-		if (lastFed) {
-			console.log(`Updated lastFed state: ${lastFed}`);
-		}
-	}, []);
+
+	// useEffect(() => {
+	// 	if (lastFed) {
+	// 		console.log(`Updated lastFed state: ${lastFed}`);
+	// 	}
+	// }, []);
 
 	// useEffect(() => {
 	//     // Function to fetch DateTime from the datebase
