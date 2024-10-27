@@ -23,7 +23,6 @@ model Cat {
   id            String     @id @default(uuid())
   name          String
   birthday      DateTime
-  age           Int
   healthStatus  Boolean    @default(true) // Default to true means that the cat is healthy
   householdId   String     // Foreign key to reference the Household
   household     Household? @relation(fields: [householdId], references: [id]) // Relation to Household
@@ -32,11 +31,11 @@ model Cat {
 }
 
 model Action {
-  id            String    @id @default(uuid())
-  actionType    String    // Can be 'food' or 'medicine'
-  dateTime      DateTime  // Store the date and time of the action
+  // id            String    @id @default(uuid())
+  id            DateTime     @id
   catId         String    // Foreign key to reference the Cat
   cat           Cat       @relation(fields: [catId], references: [id])
+  actionType    String    // Can be 'food' or 'medicine'
 }
 
 model Schedule {
