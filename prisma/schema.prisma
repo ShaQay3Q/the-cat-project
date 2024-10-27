@@ -40,11 +40,11 @@ model Action {
 }
 
 model Schedule {
-  id              Int    @id @default(autoincrement())
+  id              Int       @id @default(autoincrement())
   requireAction   String
   frequency       Int
   beginningDate   DateTime
   endingDate      DateTime
-  catId           Int    // Foreign key to reference the Cat
+  catId           Int       // Foreign key to reference the Cat
   cat             Cat       @relation(fields: [catId], references: [id])
 }
