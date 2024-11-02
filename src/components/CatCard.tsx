@@ -12,8 +12,14 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import DropdownAction from "./DropDownAction";
+import { HouseholdCats } from "@/lib/utils/getCats";
 // import { compareDateTimes, getCurrentDateTime } from "@/utils/utilDateTime";
 // import { fetchExternalImage } from "next/dist/server/image-optimizer";
+
+// Define props type // TODO get the cats from db
+type CatCardProps = {
+	oneCat: HouseholdCats;
+};
 
 export default function CatCard() {
 	const [catName] = useState("Vita");
@@ -23,7 +29,6 @@ export default function CatCard() {
 	// const now = DateTime.now().toISO(); // Get the NOW DateTime and store it as string
 
 	const alt = `${catName}'s image`;
-	// console.log(`logging dateTime: ${dateTime.toString()}`);
 
 	useEffect(() => {
 		const fetchLastTime = () => {
@@ -37,35 +42,6 @@ export default function CatCard() {
 		fetchLastTime();
 		// const dateTime = DateTime.fromISO(date); // Convert an ISO string back to a DateTime object
 	}, []);
-
-
-	// useEffect(() => {
-	// 	if (lastFed) {
-	// 		console.log(`Updated lastFed state: ${lastFed}`);
-	// 	}
-	// }, []);
-
-	// useEffect(() => {
-	//     // Function to fetch DateTime from the datebase
-	//     const fetchLastFedTime = async () => {
-	//         try {
-	//             // Replace this with your API endpoint
-	//             const response = await fetch('/api/cat/last-fed');
-	//             if (!response.ok) {
-	//                 throw new Error('Network response was not ok');
-	//             }
-	//             const date = await response.json();
-
-	//             // Assuming your API returns a DateTime string in ISO format
-	//             const fetchedDateTime = DateTime.fromISO(date.lastFed);
-	//             setLastFed(fetchedDateTime);
-	//         } catch (error) {
-	//             console.error('Error fetching last fed time:', error);
-	//         }
-	//     };
-
-	//     fetchLastFedTime();
-	// }, []); // Empty dependency array to run only once on mount
 
 	return (
 		<Card className='w-[350px]'>
