@@ -9,9 +9,22 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url = "file:./dev.db"
-  // url      = env("DATABASE_URL")
+  provider = "postgres"
+  // url = "file:./dev.db"
+  url      = env("DATABASE_URL")
+}
+
+enum FrequencyUnit {
+  Day
+  Week
+  Month
+  Year
+}
+
+enum ActionType {
+  Food
+  Medicin
+  VetVisit
 }
 
 model Household {
@@ -36,13 +49,14 @@ model Action {
   dateTime      DateTime    
   catId         Int         // Foreign key to reference the Cat
   cat           Cat         @relation(fields: [catId], references: [id])
-  actionType    String      // Can be 'food' or 'medicine'
+  actionType    ActionType      // Can be 'food' or 'medicine'
 }
 
 model Schedule {
   id              Int       @id @default(autoincrement())
-  requireAction   String
+  requireAction   ActionType
   frequency       Int
+  frequencyUnit   FrequencyUnit
   beginningDate   DateTime?   
   endingDate      DateTime?
   catId           Int       // Foreign key to reference the Cat
