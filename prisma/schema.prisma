@@ -33,7 +33,7 @@ model Cat {
 
 model Action {
   id            Int         @id @default(autoincrement())
-  dateTime      DateTime    @unique 
+  dateTime      DateTime    
   catId         Int         // Foreign key to reference the Cat
   cat           Cat         @relation(fields: [catId], references: [id])
   actionType    String      // Can be 'food' or 'medicine'
@@ -43,8 +43,8 @@ model Schedule {
   id              Int       @id @default(autoincrement())
   requireAction   String
   frequency       Int
-  beginningDate   DateTime
-  endingDate      DateTime
+  beginningDate   DateTime?   
+  endingDate      DateTime?
   catId           Int       // Foreign key to reference the Cat
   cat             Cat       @relation(fields: [catId], references: [id])
 }
