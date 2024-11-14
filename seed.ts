@@ -26,6 +26,7 @@ const Sheghy = await prisma.household.create({
 					name: "Pashmak",
 					birthday: new Date("2020-01-15"),
 					healthStatus: false,
+					image: "/siso.jpeg",
 					actions: {
 						create: [
 							{
@@ -69,6 +70,7 @@ const Sheghy = await prisma.household.create({
 					name: "Makhmal",
 					birthday: new Date("2023-05-20"),
 					healthStatus: true,
+					image: "/hansi.jpeg",
 					actions: {
 						create: [
 							{
@@ -111,6 +113,7 @@ const Lean = await prisma.household.create({
 					name: "Momo",
 					birthday: new Date("2010-04-10"),
 					healthStatus: false,
+					image: "/koon.jpeg",
 					actions: {
 						create: [
 							{
@@ -146,6 +149,7 @@ const Lean = await prisma.household.create({
 					name: "Dino",
 					birthday: new Date("2019-08-02"),
 					healthStatus: true,
+					image: "/vivi.jpeg",
 					actions: {
 						create: [
 							{

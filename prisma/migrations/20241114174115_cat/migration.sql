@@ -15,6 +15,7 @@ CREATE TABLE "Household" (
 -- CreateTable
 CREATE TABLE "Cat" (
     "id" SERIAL NOT NULL,
+    "image" TEXT,
     "name" TEXT NOT NULL,
     "birthday" TIMESTAMP(3) NOT NULL,
     "healthStatus" BOOLEAN NOT NULL DEFAULT true,

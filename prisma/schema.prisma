@@ -35,6 +35,7 @@ model Household {
 
 model Cat {
   id            Int         @id @default(autoincrement())
+  image         String?
   name          String
   birthday      DateTime
   healthStatus  Boolean     @default(true) // Default to true means that the cat is healthy
