@@ -1,13 +1,14 @@
 "use client";
 
+import { Household } from "@/lib/utils/getHousehold";
 import QRCode from "react-qr-code";
 
 type Props = {
-	userId: string;
+	household: Household;
 };
 
-export default function QRCodeGenerator({ userId }: Props) {
-	const connectURL = `http://localhost:3000/catsPageForUserWithId=${userId}`;
+export default function QRCodeGenerator({ household }: Props) {
+	const connectURL = `http://localhost:3000/catsPageForUserWithId=${household?.id}`;
 
 	return (
 		<div className='h-full w-full flex flex-col gap-5 items-center justify-center my-6'>
