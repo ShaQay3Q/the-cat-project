@@ -1,8 +1,8 @@
 import { prisma } from "../db";
 
-export async function getHouseholdById(householdId: number) {
+export async function getHouseholdByEmail(householdEmail: string) {
 	const household = await prisma.household.findUnique({
-		where: { id: householdId },
+		where: { email: householdEmail },
 		select: {
 			id: true,
 			email: true,
@@ -12,4 +12,4 @@ export async function getHouseholdById(householdId: number) {
 	return household;
 }
 
-export type Household = Awaited<ReturnType<typeof getHouseholdById>>;
+export type Household = Awaited<ReturnType<typeof getHouseholdByEmail>>;
