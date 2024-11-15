@@ -21,7 +21,7 @@ export default function CatCard({ oneCat }: OneCat) {
 	const catName = oneCat?.name;
 	const lastFed = oneCat?.actions.findLast(
 		(action) => action.actionType === "Food"
-	)?.dateTime;
+	)?.dateTime as Date;
 	console.log(`lastFed: ${lastFed}`);
 
 	const formattedLastFedDate = lastFed?.toLocaleDateString("en-US", {

@@ -9,6 +9,7 @@ export async function getHouseholdByEmail(householdEmail: string) {
 			cats: true,
 		},
 	});
+
 	return household;
 }
 
