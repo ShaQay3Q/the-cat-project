@@ -13,11 +13,11 @@ import DropdownAction from "./DropDownAction";
 import { Cat } from "@/lib/utils/getCat";
 
 // Define props type
-type OneCat = {
+type Props = {
 	oneCat: Cat;
 };
 
-export default function CatCard({ oneCat }: OneCat) {
+export default function CatCard({ oneCat }: Props) {
 	const catName = oneCat?.name;
 	const lastFed = oneCat?.actions.findLast(
 		(action) => action.actionType === "Food"
