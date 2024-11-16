@@ -1,11 +1,13 @@
-import CatCard from "@/components/CatCard";
-import QRCodeGenerator from "@/components/QRCodeGenerator";
 import { ListOfCats } from "@/components/ListOfCats";
+import { Button } from "@/components/ui/button";
 import { getCatById } from "@/lib/utils/getCat";
 import { getHouseholdByEmail } from "@/lib/utils/getHousehold";
+import Link from "next/link";
+import React from "react";
 
-export default async function Home() {
+export default async function Gojiraaaa() {
 	const aHousehold = await getHouseholdByEmail("sheghy@mail.com");
+
 	if (!aHousehold) {
 		return;
 	}
@@ -32,10 +34,26 @@ export default async function Home() {
 		);
 
 	return (
-		<div>
-			<CatCard oneCat={catArr[1]} />
-			<ListOfCats cats={catArr} />
-			<QRCodeGenerator household={aHousehold} />
+		<div className='flex flex-col justify-center items-center gap-7 pt-6 bg-slate-900 h-screen'>
+			<div className='flex flex-row gap-8'>
+				<h1 className='font-extrabold text-3xl text-sky-100'>Gojiraaaa</h1>
+				<Link
+					legacyBehavior
+					href='http://localhost:3000/qr-code'
+					passHref
+				>
+					<Button
+						variant={"secondary"}
+						asChild
+					>
+						<a>Generate QR-Code</a>
+					</Button>
+				</Link>
+			</div>
+
+			<div className='flex flex-row p-1 bg-slate-600 gap-1'>
+				<ListOfCats cats={catArr} />
+			</div>
 		</div>
 	);
 }

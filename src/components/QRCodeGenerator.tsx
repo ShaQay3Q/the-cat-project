@@ -8,7 +8,11 @@ type Props = {
 };
 
 export default function QRCodeGenerator({ household }: Props) {
-	const connectURL = `http://localhost:3000/catsPageForUserWithId=${household?.id}`;
+	if (!household){
+		return;
+	}
+	// const connectURL = `http://localhost:3000/catsPageForUserWithId=${household?.id}`;
+	const connectURL = "http://localhost:3000/gojiraaaa";
 
 	return (
 		<div className='h-full w-full flex flex-col gap-5 items-center justify-center my-6'>
