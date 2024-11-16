@@ -1,11 +1,8 @@
 import CatCard from "@/components/CatCard";
 import QRCodeGenerator from "@/components/QRCodeGenerator";
 import { ListOfCats } from "@/components/ListOfCats";
-import { Cat, getCatById } from "@/lib/utils/getCat";
+import { getCatById } from "@/lib/utils/getCat";
 import { getHouseholdByEmail } from "@/lib/utils/getHousehold";
-// import { Cat } from "@prisma/client";
-
-// const aCat = await getCatById(5);
 
 export default async function Home() {
 	const aHousehold = await getHouseholdByEmail("sheghy@mail.com");
@@ -36,7 +33,6 @@ export default async function Home() {
 
 	return (
 		<div>
-			{/* <p>{shaCats}</p> */}
 			<CatCard oneCat={catArr[1]} />
 			<ListOfCats cats={catArr} />
 			<QRCodeGenerator household={aHousehold} />
