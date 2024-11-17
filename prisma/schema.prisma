@@ -1,17 +1,47 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgres"
-  // url = "file:./dev.db"
   url      = env("DATABASE_URL")
+}
+
+model Household {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  cats  Cat[]
+}
+
+model Cat {
+  id           Int        @id @default(autoincrement())
+  image        String?
+  name         String
+  birthday     DateTime
+  healthStatus Boolean    @default(true)
+  householdId  Int
+  actions      Action[]
+  household    Household  @relation(fields: [householdId], references: [id])
+  schedules    Schedule[]
+}
+
+model Action {
+  id         Int        @id @default(autoincrement())
+  dateTime   DateTime
+  catId      Int
+  actionType ActionType
+  cat        Cat        @relation(fields: [catId], references: [id])
+}
+
+model Schedule {
+  id            Int           @id @default(autoincrement())
+  requireAction ActionType
+  frequency     Int
+  frequencyUnit FrequencyUnit
+  beginningDate DateTime?
+  endingDate    DateTime?
+  catId         Int
+  cat           Cat           @relation(fields: [catId], references: [id])
 }
 
 enum FrequencyUnit {
@@ -25,41 +55,4 @@ enum ActionType {
   Food
   Medicin
   VetVisit
-}
-
-model Household {
-  id            Int         @id @default(autoincrement())
-  email         String      @unique
-  cats          Cat[]       // Relation to the Cat model
-}
-
-model Cat {
-  id            Int         @id @default(autoincrement())
-  image         String?
-  name          String
-  birthday      DateTime
-  healthStatus  Boolean     @default(true) // Default to true means that the cat is healthy
-  householdId   Int         // Foreign key to reference the Household
-  household     Household   @relation(fields: [householdId], references: [id]) // Relation to Household
-  actions       Action[]    // This field to reference related actions
-  schedules     Schedule[]  // This field to reference related schedules
-}
-
-model Action {
-  id            Int         @id @default(autoincrement())
-  dateTime      DateTime    
-  catId         Int         // Foreign key to reference the Cat
-  cat           Cat         @relation(fields: [catId], references: [id])
-  actionType    ActionType      // Can be 'food' or 'medicine'
-}
-
-model Schedule {
-  id              Int       @id @default(autoincrement())
-  requireAction   ActionType
-  frequency       Int
-  frequencyUnit   FrequencyUnit
-  beginningDate   DateTime?   
-  endingDate      DateTime?
-  catId           Int       // Foreign key to reference the Cat
-  cat             Cat       @relation(fields: [catId], references: [id])
 }
