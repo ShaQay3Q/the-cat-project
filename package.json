@@ -8,7 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"seed": "bun seed.ts",
-		"postinstall": "prisma generate"
+		"postinstall": "prisma generate && prisma migrate deploy"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.20.0",
