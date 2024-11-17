@@ -4,11 +4,10 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "prisma generate && next build",
+		"build": "DEBUG=* prisma generate && prisma migrate deploy && next build",
 		"start": "next start",
 		"lint": "next lint",
-		"seed": "bun seed.ts",
-		"postinstall": "DEBUG=* prisma generate && prisma migrate deploy || echo Skipping migrations"
+		"seed": "bun seed.ts"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.20.0",
