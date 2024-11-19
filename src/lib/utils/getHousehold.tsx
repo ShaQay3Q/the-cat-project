@@ -1,7 +1,7 @@
-import { prisma } from "../db";
+// import { prisma } from "../db";
 
 export async function getHouseholdByEmail(householdEmail: string) {
-	return;
+	return householdEmail;
 
 	// const household = await prisma.household.findUnique({
 	// 	where: { email: householdEmail },
