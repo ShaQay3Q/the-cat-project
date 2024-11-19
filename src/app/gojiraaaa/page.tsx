@@ -1,8 +1,8 @@
-import { ListOfCats } from "@/components/ListOfCats";
-import { Button } from "@/components/ui/button";
-import { getCatById } from "@/lib/utils/getCat";
+// import { ListOfCats } from "@/components/ListOfCats";
+// import { Button } from "@/components/ui/button";
+// import { getCatById } from "@/lib/utils/getCat";
 import { getHouseholdByEmail } from "@/lib/utils/getHousehold";
-import Link from "next/link";
+// import Link from "next/link";
 import React from "react";
 
 export default async function Gojiraaaa() {
