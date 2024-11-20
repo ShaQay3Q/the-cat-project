@@ -35,13 +35,15 @@ export default async function page({ params }: { params: { userId: number } }) {
 				[]
 		);
 
+	const QRCodeAddress = `/qr-code/${userId}`;
+
 	return (
 		<div className='flex flex-col justify-center items-center gap-7 pt-6 bg-slate-900 h-screen'>
 			<div className='flex flex-row gap-8'>
 				<h1 className='font-extrabold text-3xl text-sky-100'>Gojiraaaa</h1>
 				<Link
 					legacyBehavior
-					href='/qr-code'
+					href={QRCodeAddress}
 					passHref
 				>
 					<Button

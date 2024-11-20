@@ -1,10 +1,14 @@
 import React from "react";
 import QRCodeGenerator from "@/components/QRCodeGenerator";
 // import Link from "next/link";
-import { getHouseholdByEmail } from "@/lib/utils/getHousehold";
+// import { getHouseholdById } from "@/lib/utils/getHousehold";
 
-export default async function QRPage() {
-	const household = await getHouseholdByEmail("sheghy@mail.com");
+export default async function QRPage({
+	params,
+}: {
+	params: { userId: number };
+}) {
+	// const household = await getHouseholdById(Number(params.userId));
 
 	return (
 		<div className='flex flex-col items-center justify-between min-h-screen bg-white p-4'>
@@ -14,7 +18,7 @@ export default async function QRPage() {
 						Generated QR-Code
 					</h1>
 					<div className='m-14'>
-						<QRCodeGenerator household={household} />
+						<QRCodeGenerator householdId={params.userId} />
 					</div>
 				</div>
 			</div>
