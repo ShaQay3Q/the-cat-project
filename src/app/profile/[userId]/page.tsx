@@ -11,7 +11,7 @@ export default async function page({ params }: { params: { userId: number } }) {
 	const aHousehold = await getHouseholdById(userId);
 
 	if (!aHousehold) {
-		return;
+		return <p>NOT FOUND!</p>;
 	}
 
 	const cats = aHousehold?.cats;
