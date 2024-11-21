@@ -4,10 +4,11 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "npx prisma generate && next build",
+		"build": "prisma generate && next build",
 		"start": "next start",
 		"lint": "next lint",
-		"seed": "bun seed.ts"
+		"seed": "bun seed.ts",
+		"postinstall": "prisma generate && prisma migrate deploy"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.20.0",
