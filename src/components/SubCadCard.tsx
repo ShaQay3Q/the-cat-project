@@ -7,13 +7,22 @@ import {
 	CardDescription,
 	CardContent,
 } from "./ui/card";
-import { Content } from "@radix-ui/react-dropdown-menu";
+import { Cat } from "@prisma/client";
 
-export default function SubCadCard() {
+type Props = {
+	cat: Cat;
+};
+
+export default function SubCadCard({ cat }: Props) {
 	return (
-		<div className='bg-rose-200 rounded pl-1 px-3'>
-			<h1 className='font-semibold text-rose-700'>SubCadCard</h1>
-			<Card className='w-auto flex flex-col justify-center items-center'>
+		<div className='bg-rose-200 rounded pt-1 px-2 pb-3 flex flex-col items-center'>
+			<h1
+				className='font-semibold text-rose-700'
+				defaultValue={"Food"}
+			>
+				Food
+			</h1>
+			<Card className='px-1 w-auto flex flex-col justify-center items-center'>
 				<h2 className='pt-1  font-normal text-sm'>Last Feeding Time:</h2>
 				<h3 className='font-medium text-base text-rose-700'>
 					<span>Today, 12:36</span>

@@ -10,7 +10,7 @@ export async function getCatById(catId: number) {
 			birthday: true,
 			householdId: true,
 			healthStatus: true,
-			actions: true,
+			actions: {},
 			schedules: true,
 		},
 	});
