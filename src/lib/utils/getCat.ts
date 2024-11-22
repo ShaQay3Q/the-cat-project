@@ -10,7 +10,7 @@ export async function getCatById(catId: number) {
 			birthday: true,
 			householdId: true,
 			healthStatus: true,
-			actions: {},
+			actions: true,
 			schedules: true,
 		},
 	});
@@ -18,5 +18,3 @@ export async function getCatById(catId: number) {
 }
 
 export type Cat = Awaited<ReturnType<typeof getCatById>>;
-
-
