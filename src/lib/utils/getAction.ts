@@ -1,9 +1,9 @@
 import { prisma } from "../db";
 import { ActionType } from "@prisma/client";
 
-export async function getActionsByName(aType: ActionType) {
+export async function getActionsByName(actionType: ActionType) {
 	const actions = await prisma.action.findMany({
-		where: { actionType: aType },
+		where: { actionType: actionType },
 		select: {
 			id: true,
 			dateTime: true,
