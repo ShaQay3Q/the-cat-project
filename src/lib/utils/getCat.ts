@@ -18,5 +18,3 @@ export async function getCatById(catId: number) {
 }
 
 export type Cat = Awaited<ReturnType<typeof getCatById>>;
-
-
