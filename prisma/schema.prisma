@@ -39,6 +39,7 @@ model Schedule {
   requireAction ActionType
   frequency     Int
   frequencyUnit FrequencyUnit
+  description   String?
   beginningDate DateTime?
   endingDate    DateTime?
   catId         Int
