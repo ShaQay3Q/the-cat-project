@@ -1,26 +1,18 @@
 "use client";
 
-// import { handleAction } from "@/app/_actions/formHandler";
+import handleAction from "../actions/catRegistrationHandlerAction";
 import React from "react";
+import { currentDate } from "@/lib/utils/currentDate";
 
 export default function CatRegistrationForm() {
-	const currentDateRaw = new Date();
-	const formatDateISO = (date: Date) => {
-		// Convert the date to ISO string
-		const isoString = date.toISOString();
-		// Split at the "T" character to get the date part
-		const formattedDate = isoString.split("T")[0];
-		return formattedDate;
-	};
-
-	const currentDate = formatDateISO(currentDateRaw);
 	return (
 		<div className='w-full flex flex-col max-w-xl mx-auto justify-center min-h-screen items-center'>
 			<h1 className='text-pink-600 font-bold text-xl mb-4'>Cat Registration</h1>
 
 			<form
 				className='w-full'
-				// action={handleAction}
+				action={handleAction}
+				method='POST'
 			>
 				<div className='flex flex-col gap-y-4'>
 					<div>
