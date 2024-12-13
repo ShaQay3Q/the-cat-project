@@ -64,6 +64,7 @@ export default function CatRegistrationForm() {
 							htmlFor='img'
 						>
 							Upload an Image
+							<span className='ml-1 text-sm'>(Optional)</span>
 						</label>
 						<input
 							type='file'

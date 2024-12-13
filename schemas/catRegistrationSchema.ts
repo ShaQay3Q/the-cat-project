@@ -23,5 +23,6 @@ export const catRegistrationSchema = z.object({
 		)
 		.refine((file) => file.size <= fileSizeLimit, {
 			message: "File size should not exceed 5MB",
-		}),
+		})
+		.optional(),
 });
