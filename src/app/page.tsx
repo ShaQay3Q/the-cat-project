@@ -158,11 +158,13 @@
 // 	);
 // }
 
-import React, { useState } from "react";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import CatForm from "@/components/CatForm";
+import React from "react";
+import CatRegistrationForm from "@/components/CatRegistrationForm";
 
 export default function Home() {
-	return <CatForm />;
+	return (
+		<div className='px-4 bg-orange-200'>
+			<CatRegistrationForm />
+		</div>
+	);
 }
