@@ -106,7 +106,7 @@ const Sheghy = await prisma.household.create({
 
 const Lean = await prisma.household.create({
 	data: {
-		email: "lean@email.com",
+		email: "man@email.com",
 		cats: {
 			create: [
 				{
